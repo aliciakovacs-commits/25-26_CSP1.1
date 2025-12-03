@@ -1,43 +1,51 @@
-#   a116_buggy_image.py
 import turtle as trtl
-# instead of a descriptive name of the turtle such as painter,
-# a less useful variable name x is used
-#Create spider body
-body = trtl.Turtle()
-body.pensize(40)
-body.circle(20)
-#Configure spider legs
-num_of_leg = 8
-length = 70
-direction = 360 / num_of_leg
-body.pensize(5)
-sub_leg = 0
+
+# create spider body
+spider = trtl.Turtle()
+spider.pensize(40)
+spider.circle(20)
+
+# create spider head
+spider.goto(0, -30)
+spider.circle(5)
+
+# configure spider legs
+num_legs = 8
+leg_length = 50 # reduce length
+angle = 360/num_legs - 25 # reduce angle
+spider.pensize(5)
+
+# draw curved legs
+leg = 0
 radius = 60
-
-#Draw legs
-while (sub_leg < num_of_leg):
-  body.goto(0,20)
-  if sub_leg < 4:
-      body.setheading(direction*sub_leg + 125)
-      body.pendown()
-      body.circle(radius, 120)
-      body.penup()
+while leg < num_legs:
+  spider.goto(0,20)
+  if leg < 4:
+    spider.setheading(angle*leg + 125)
+    spider.pendown()
+    spider.circle(radius, 120)
+    spider.penup()
   else:
-      body.setheading(direction*sub_leg + 90)
-      body.pendown()
-      body.circle(radius, -120)
-      body.penup()
+    spider.setheading(angle*leg + 90)
+    spider.pendown()
+    spider.circle(radius, -120)
+    spider.penup()
 
-    leg
+  leg = leg + 1
 
-print("direction=", direction)
-("direction*sub_leg=", direction*sub_leg)
+# draw eyes
+spider.pensize(5)
+spider.color("mediumpurple")
+spider.penup()
+spider.goto(-5, -35)
+spider.pendown()
+spider.circle(5)
+spider.penup()
+spider.goto(5, -35)
+spider.pendown()
+spider.circle(5)
 
-#Create spider eyes
-body = trtl.Turtle()
-body.color("white")
-body.pensize(5)
-body.circle(2)
+spider.hideturtle()
 
 wn = trtl.Screen()
 wn.mainloop()
